@@ -26,14 +26,17 @@ submitButton.addEventListener('click', (event) => {
         pages = value;
         break;
       case 'read': 
-        read = value;
+        if (value === 'read') 
+          read = 'Yes';
+        else
+          read = 'No';
         break;
     }
   }
-
   console.log('Submit button event listener activated.');
 
-  addBookToLibrary(title, author, pages, read);
+  const book = new Book(title, author, pages, read);
+  addBookToLibrary(book);
   displayBooks();
   newBookDialog.close();
   newBookForm.reset();
@@ -49,9 +52,8 @@ function Book(title, author, pages, read) {
   this.read = read
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  const book = new Book(title, author, pages, read);
-
+function addBookToLibrary(book) {
+  book.index = myLibrary.length;
   myLibrary.push(book);
 }
 
@@ -74,6 +76,9 @@ function createNewBook(book) {
   const newBook = document.createElement('div');
   newBook.setAttribute('class', 'book');
   for (const key in book) {
+    if (key === 'index') {
+      continue;
+    }
     const divLabel = document.createElement('div');
     divLabel.setAttribute('class', `${key} label`);
     divLabel.textContent = `${key[0].toUpperCase()}${key.slice(1)}:`;
@@ -85,5 +90,51 @@ function createNewBook(book) {
     newBook.appendChild(divLabel);
     newBook.appendChild(divValue);
   }
+
+  const readButton = document.createElement('button');
+  readButton.setAttribute('id', `r${book.index}`);
+  readButton.setAttribute('class', 'read-button');
+  readButton.textContent = newBook.lastChild.textContent;
+  newBook.lastChild.textContent = '';
+  newBook.lastChild.appendChild(readButton);
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.setAttribute('class', 'delete-button');
+  deleteButton.setAttribute('id', `${book.index}`);
+  newBook.appendChild(deleteButton);
+
   library.appendChild(newBook);
+}
+
+
+const deleteButton = document.querySelector('.delete-button');
+
+library.addEventListener('click', (event) => {
+  if (event.target.classList.contains('delete-button')) {
+    myLibrary.splice(Number(event.target.id), 1);
+    reIndex();
+    displayBooks();
+  }
+});
+
+function reIndex() {
+  for (let i = 0; i < myLibrary.length; i++) {
+    myLibrary[i].index = i;
+  }
+}
+
+library.addEventListener('click', (event) => {
+  if (event.target.classList.contains('read-button')) {
+    toggleReadValue(event.target.id); 
+  }
+});
+
+function toggleReadValue(id) {
+  const readButton = document.querySelector(`#${id}`);
+  if (readButton.textContent === 'Yes') {
+    readButton.textContent = 'No';
+  } else {
+    readButton.textContent = 'Yes';
+  }
 }

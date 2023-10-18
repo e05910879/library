@@ -19,6 +19,10 @@
 .book-button {
     padding: 24px;
     position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 dialog {
@@ -72,4 +76,12 @@ body {
 
     place-items: center;
     place-content: center;
+}
+
+.radio-buttons {
+    grid-column: 1 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    margin-top: 12px;
 }
