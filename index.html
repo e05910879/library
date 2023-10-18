@@ -7,24 +7,38 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="book">
-        <div class="title-container">
-            <div class="title-label">Title:</div>
-            <div class="title">Fight Club</div>
-        </div>
-        <div class="author-container">
-            <div class="author-label">Author:</div>
-            <div class="author">Chuck Palahniuk</div>
-        </div>
-        <div class="pages-container">
-            <div class="pages-label">Pages:</div>
-            <div class="pages">Fight Club</div>
-        </div>
-        <div class="read-container">
-            <div class="read-label">Read:</div>
-            <button>Toggle</button>
-        </div>
+    <div class="book-button">
+        <button class="new-book-button">NEW BOOK</button>
+        <dialog class="new-book-dialog">
+            <p class="new-book-dialog-header">New Book</p>
+            <form>
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author">
+                <label for="title">Pages</label>
+                <input type="text" id="pages" name="pages">
+                <label for="title">Read</label>
+                <input type="text" id="read" name="read">
+                <button class="submit-button">Submit</button>
+            </form>
+        </dialog>
+    </div>
 
+    <div class="library">
+        <div class="book">
+            <div class="title label">Title:</div>
+            <div class="title value">The Hobbit</div>
+
+            <div class="author label">Author:</div>
+            <div class="author value">J.R.R. Tolkien</div>
+
+            <div class="pages label">Pages:</div>
+            <div class="pages value">304</div>
+
+            <div class="read label">Read:</div>
+            <div class="read value"><button>Toggle</button></div>
+        </div>
     </div>
     <script src="./javascript.js"></script>
 </body>

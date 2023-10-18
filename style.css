@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.book {
+    border: 1px solid lightgray;
+    width: 240px;
+    padding: 16px;
+
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-template-columns: repeat(2,max-content);
+    justify-content: space-evenly;
+    gap: 4px;
+}
+
+body {
+    display: grid;
+    grid-auto-rows: max-content;
+    justify-items: center;
+    align-items: center;
+}
+
+.book-button {
+    padding: 24px;
+    position: relative;
+}
+
+dialog {
+    border: 1px solid lightgray;
+    box-sizing: border-box;
+    --dialog-height: 163.5px;
+    --dialog-width: 400px;
+
+    width: var(--dialog-width);
+    padding: 24px;
+
+    position: absolute;
+    top: calc(40% - calc(var(--dialog-height)/2));
+    left: calc(50% - calc(var(--dialog-width)/2));
+
+    border-radius: 6px;
+
+}
+
+form {
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-template-columns: repeat(2,max-content);
+    justify-content: space-evenly;
+    gap: 4px;
+}
+
+.submit-button {
+    grid-column: 1 / 3;
+    place-self: center;
+    margin-top: 12px;
+}
+
+.new-book-dialog-header {
+    text-align: center;
+    margin-bottom: 12px;
+}
