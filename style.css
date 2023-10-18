@@ -15,12 +15,6 @@
     gap: 4px;
 }
 
-body {
-    display: grid;
-    grid-auto-rows: max-content;
-    justify-items: center;
-    align-items: center;
-}
 
 .book-button {
     padding: 24px;
@@ -52,13 +46,30 @@ form {
     gap: 4px;
 }
 
-.submit-button {
+.buttons {
     grid-column: 1 / 3;
-    place-self: center;
     margin-top: 12px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
 }
 
 .new-book-dialog-header {
     text-align: center;
     margin-bottom: 12px;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 68px 1fr;
+}
+
+.library {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(274px, 1fr));
+    gap: 20px;
+
+    place-items: center;
+    place-content: center;
 }
